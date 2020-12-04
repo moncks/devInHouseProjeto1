@@ -61,20 +61,23 @@ function lerLocalStorageEMontarLista() {
     }
 }
 
-function limpeItemStorage(id) {
-    var index = id - 1
-    var item = JSON.parse(localStorage.getItem('listaToDo'))
-    console.log(`ANTES DA EXCLUSAO ${item}`)
-    item.splice(index, 1)
-    console.log(`DEPOIS DA EXCLUSAO ${item}`)
-    localStorage.setItem('listaToDo', JSON.stringify(item))
-}
+// function limpeItemStorage(id) {
+//     var index = id - 1
+//     console.log(`ID ${id} / index ${index}`)
+
+//     var item = JSON.parse(localStorage.getItem('listaToDo'))
+//     console.log(`ANTES DA EXCLUSAO ${item}`)
+//     item.splice(index, 1)
+//     console.log(`DEPOIS DA EXCLUSAO ${item}`)
+//     localStorage.setItem('listaToDo', JSON.stringify(item))
+// }
 
 function remover(id) {
+    console.log(`id para ser removido ${id}`)
     for (i = 0; i < ulItens.children.length; i++) {
         if (ulItens.children[i].getAttribute('id') == id) {
+            console.log(ulItens.children[i])
             ulItens.children[i].remove();
-            limpeItemStorage(id)
         }
     }
 }
