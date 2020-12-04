@@ -1,99 +1,21 @@
+/* CSS CABEÇALHO */
+
 body {
     margin: 0;
     min-width: 250px;
 }
 
-
-/* 
-Inclui o preenchimento e a borda na largura e altura total de um elemento */
-
 * {
     box-sizing: border-box;
+    /* Inclui o preenchimento e a borda na largura e altura total de um elemento */
 }
 
-
-/* Remova as margens e preenchimento da lista*/
-
-.list ul {
-    margin: 0;
-    padding: 0;
+.main:after {
+    /* Limpe os flutuadores após o cabeçalho */
+    content: "";
+    display: table;
+    clear: both;
 }
-
-
-/* Estilize os itens da lista */
-
-.list ul li {
-    cursor: pointer;
-    position: relative;
-    padding: 12px 8px 12px 40px;
-    list-style-type: none;
-    background: #eee;
-    font-size: 18px;
-    transition: 0.2s;
-    /* tornar os itens da lista não selecionáveis */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-
-/* Defina todos os itens da lista ímpar para uma cor diferente (listras de zebra) */
-
-.list ul li:nth-child(odd) {
-    background: #f9f9f9;
-}
-
-
-/*Cor de fundo mais escura ao pairar */
-
-.list ul li:hover {
-    background: #ddd;
-}
-
-
-/* Quando clicado, adiciona uma cor de fundo e risca o texto */
-
-.list ul li.checked {
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-}
-
-
-/* Adicione uma marca "marcada" ao clicar em o */
-
-.list ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-}
-
-
-/* Estilize o botão Fechar */
-
-.remover {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
-    border: none!important;
-}
-
-.remover:hover {
-    background-color: #f44336;
-    color: white;
-}
-
-
-/* Defina o estilo do cabeçalho */
 
 .main {
     background-color: #36c8f4;
@@ -102,19 +24,6 @@ Inclui o preenchimento e a borda na largura e altura total de um elemento */
     font: normal 25px Arial;
     text-align: center;
 }
-
-
-/* Limpe os flutuadores após o cabeçalho */
-
-.main:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-
-/* Estilize a entrada
- */
 
 input {
     margin: 0;
@@ -125,9 +34,6 @@ input {
     float: left;
     font-size: 16px;
 }
-
-
-/* Estilo do botão "Adicionar"*/
 
 .addBtn {
     padding: 10px;
@@ -143,10 +49,104 @@ input {
     border: none!important;
 }
 
-.addBtn:hover {
-    background-color: #bbb;
+
+/* FORMATACAO DA LISTA */
+
+.list ul {
+    /* Remova as margens e preenchimento da lista*/
+    margin: 0;
+    padding: 0;
+}
+
+.list ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: white;
+    font-size: 18px;
+    transition: 0.2s;
+    /* tornar os itens da lista não selecionáveis */
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+}
+
+label.checked {
+    text-decoration: line-through;
+}
+
+.remover {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+    border: none!important;
+}
+
+.remover:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+
+/* ITEM CHECKED */
+
+.list ul li.checked {
+    /* Quando clicado, adiciona uma cor de fundo e risca o texto */
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
 }
 
 .checkbox:checked {
     text-decoration: line-through;
 }
+
+
+/* EXCLUIR QUANDO ACABAR!!!!!!!!!!!!!!!! */
+
+
+/* Defina todos os itens da lista ímpar para uma cor diferente (listras de zebra) */
+
+
+/* .list ul li:nth-child(odd) {
+    background: #f9f9f9;
+} */
+
+
+/*Cor de fundo mais escura ao pairar */
+
+
+/* .list ul li:hover {
+    background: #ddd;
+} */
+
+
+/* Adicione uma marca "marcada" ao clicar em o */
+
+
+/* .list ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+} */
+
+
+/* Estilize o botão Fechar */
+
+
+/* Defina o estilo do cabeçalho */
+
+
+/* .addBtn:hover {
+    background-color: #bbb;
+} */
