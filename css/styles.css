@@ -1,8 +1,13 @@
 /* CSS CABEÇALHO */
 
 body {
-    margin: 0;
-    min-width: 250px;
+    background: rgb(70, 142, 236);
+    font: normal 15pt Arial;
+}
+
+header {
+    color: white;
+    text-align: center;
 }
 
 * {
@@ -25,22 +30,21 @@ body {
     text-align: center;
 }
 
-input {
+section.main input {
     margin: 0;
     border: none;
     border-radius: 0;
-    width: 75%;
-    padding: 10px;
-    float: left;
+    width: 50%;
+    padding: 20px;
     font-size: 16px;
+    right: 25px;
 }
 
 .addBtn {
-    padding: 10px;
-    width: 25%;
+    padding: 20px;
+    width: 30%;
     background: #d9d9d9;
     color: #555;
-    float: left;
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -52,15 +56,25 @@ input {
 
 /* FORMATACAO DA LISTA */
 
+section {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 800px;
+    margin: auto;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.263);
+}
+
+
+/* Remova as margens e preenchimento da lista*/
+
 .list ul {
-    /* Remova as margens e preenchimento da lista*/
     margin: 0;
     padding: 0;
 }
 
 .list ul li {
     cursor: pointer;
-    position: relative;
     padding: 12px 8px 12px 40px;
     list-style-type: none;
     background: white;
@@ -68,16 +82,43 @@ input {
     transition: 0.2s;
 }
 
+label {
+    width: 80%;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 20px;
+    font-size: 20px;
+    right: 25px;
+    display: inline-block
+}
+
+section.list input {
+    width: 5%;
+}
+
+input[type=checkbox] {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2);
+    /* IE */
+    -moz-transform: scale(2);
+    /* FF */
+    -webkit-transform: scale(2);
+    /* Safari and Chrome */
+    -o-transform: scale(2);
+    /* Opera */
+    transform: scale(2);
+}
+
 label.checked {
     text-decoration: line-through;
 }
 
 .remover {
-    position: absolute;
     right: 0;
     top: 0;
     padding: 12px 16px 12px 16px;
-    border: none!important;
+    border-radius: 25%;
 }
 
 .remover:hover {
@@ -85,49 +126,17 @@ label.checked {
     color: white;
 }
 
+footer {
+    color: white;
+    text-align: center;
+    font-style: italic;
+}
 
-/* EXCLUIR QUANDO ACABAR!!!!!!!!!!!!!!!! */
+img {
+    width: 50px;
+    padding-top: 20px;
+}
 
-
-/* Defina todos os itens da lista ímpar para uma cor diferente (listras de zebra) */
-
-
-/* .list ul li:nth-child(odd) {
-    background: #f9f9f9;
-} */
-
-
-/*Cor de fundo mais escura ao pairar */
-
-
-/* .list ul li:hover {
-    background: #ddd;
-} */
-
-
-/* Adicione uma marca "marcada" ao clicar em o */
-
-
-/* .list ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 10px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
-} */
-
-
-/* Estilize o botão Fechar */
-
-
-/* Defina o estilo do cabeçalho */
-
-
-/* .addBtn:hover {
-    background-color: #bbb;
-} */
+p {
+    align-items: center;
+}
