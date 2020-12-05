@@ -1,10 +1,9 @@
-var addBtn = document.getElementById('addBtn');
 var textItem = document.getElementById('text1');
 var ulItens = document.getElementById('meusItens');
 var itemsJson = [];
-var labelClass = [];
 var li;
-let checkbox;
+var checkbox;
+var label
 var contador = itemsJson.length
 
 lerLocalStorageEMontarLista()
@@ -17,12 +16,12 @@ function adicionar() {
         saveOnLocalStorage(itemAFazer, 'check');
         limparCampoInput();
     } else {
-        alert('adiciona uma merda aqui!')
+        alert('Você precisa escrever uma tarefa aqui!')
     }
 }
 
 function criarItem(valor, classAtributo) {
-    let li = document.createElement("li");
+    li = document.createElement("li");
     li.setAttribute('id', contador += 1)
 
     checkbox = document.createElement('input');
@@ -38,7 +37,7 @@ function criarItem(valor, classAtributo) {
 
     li.appendChild(checkbox)
 
-    let label = document.createElement('label')
+    label = document.createElement('label')
     label.appendChild(document.createTextNode(valor))
     label.setAttribute('class', classAtributo)
     li.appendChild(label);
@@ -47,8 +46,23 @@ function criarItem(valor, classAtributo) {
     ulItens.appendChild(li);
 }
 
+function alterarCheck(id) {
+    var index = id - 1
+    label = document.getElementsByTagName('label')[index]
+    if (label.getAttribute('class') == 'check') {
+        //marcar como concluida
+        label.setAttribute('class', 'checked')
+        updateStyleLocalStorage(index, 'checked')
+    } else {
+        // desmarcar conclusão da tarefa
+        label.setAttribute('class', 'check')
+        updateStyleLocalStorage(index, 'check')
+    }
+    return label
+}
+
 function criarBotaoRemoverItem(id) {
-    let btn = document.createElement('button');
+    var btn = document.createElement('button');
     btn.setAttribute('onclick', 'remover(' + id + ')');
     btn.className = 'remover'
     btn.appendChild(document.createTextNode("X"))
@@ -79,21 +93,6 @@ function lerLocalStorageEMontarLista() {
     }
 }
 
-function alterarCheck(id) {
-    var index = id - 1
-    var label = document.getElementsByTagName('label')[index]
-    if (label.getAttribute('class') == 'check') {
-        //marcar como concluida
-        label.setAttribute('class', 'checked')
-        updateStyleLocalStorage(index, 'checked')
-    } else {
-        // desmarcar conclusão da tarefa
-        label.setAttribute('class', 'check')
-        updateStyleLocalStorage(index, 'check')
-    }
-    return label
-}
-
 function updateStyleLocalStorage(index, classLabel) {
     itemsJson = JSON.parse(localStorage.getItem('listaToDo'))
     itemsJson[index].labelClass = classLabel
@@ -110,15 +109,8 @@ function remover(id) {
 }
 
 function limpeItemStorage(id) {
-    obj = JSON.parse(localStorage.getItem('listaToDo'));
-    console.log(`id para ser removido ${id}`)
-    console.log(obj[id])
-
-    console.log(`ANTES DE EXCLUIR ${JSON.stringify(obj)}`)
-    const index = obj.indexOf(obj[id]);
-    obj.splice(index, 1);
-    console.log(`DEPOIS DE EXCLUIR ${JSON.stringify(obj)}`)
-
-    localStorage.setItem('listaToDo', JSON.stringify(obj))
-
+    itemsJson = JSON.parse(localStorage.getItem('listaToDo'));
+    const index = itemsJson.indexOf(itemsJson[id]);
+    itemsJson.splice(index, 1);
+    localStorage.setItem('listaToDo', JSON.stringify(itemsJson))
 }
