@@ -6,6 +6,7 @@ var labelClass = [];
 var li;
 let checkbox;
 var contador = itemsJson.length
+
 lerLocalStorageEMontarLista()
 
 function adicionar() {
@@ -113,8 +114,11 @@ function limpeItemStorage(id) {
     console.log(`id para ser removido ${id}`)
     console.log(obj[id])
 
-    let a = obj.splice(id)
-    console.log(a)
+    console.log(`ANTES DE EXCLUIR ${JSON.stringify(obj)}`)
+    const index = obj.indexOf(obj[id]);
+    obj.splice(index, 1);
+    console.log(`DEPOIS DE EXCLUIR ${JSON.stringify(obj)}`)
+
     localStorage.setItem('listaToDo', JSON.stringify(obj))
 
 }
