@@ -66,11 +66,6 @@ input {
     background: white;
     font-size: 18px;
     transition: 0.2s;
-    /* tornar os itens da lista não selecionáveis */
-    /* -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
 }
 
 label.checked {
@@ -88,20 +83,6 @@ label.checked {
 .remover:hover {
     background-color: #f44336;
     color: white;
-}
-
-
-/* ITEM CHECKED */
-
-.list ul li.checked {
-    /* Quando clicado, adiciona uma cor de fundo e risca o texto */
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-}
-
-.checkbox:checked {
-    text-decoration: line-through;
 }
 
 

@@ -22,12 +22,12 @@ Você está participando de um processo seletivo para ingressar numa vaga de pro
 
 :heavy_check_mark: Uma lista contendo as atividades já inseridas.
 
-:heavy_check_mark: Cada linha da lista deve conter: 
-	* checkbox para o usuário marcar que aquela atividade já foi realizada; 
-	* o texto que o usuário digitou ao cadastrar a atividade; 
-	* botão para excluir a atividade da lista, caso desejado.
+:heavy_check_mark: Cada linha da lista deve conter: <br>
+* checkbox para o usuário marcar que aquela atividade já foi realizada; :heavy_check_mark: <br> 
+* o texto que o usuário digitou ao cadastrar a atividade; :heavy_check_mark: <br>
+* botão para excluir a atividade da lista, caso desejado. :heavy_check_mark: <br>
 
-:x: Quando o usuário marcar uma tarefa como realizada, o texto daquela linha deve ser tachado (line-through).
+:heavy_check_mark: Quando o usuário marcar uma tarefa como realizada, o texto daquela linha deve ser tachado (line-through).
 
 :heavy_check_mark: A lista deve ser salva no "localStorage" do navegador (incluindo quais itens já foram realizados), e deve ser carregada sempre que a página for reaberta.
 

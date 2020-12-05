@@ -4,6 +4,7 @@ var ulItens = document.getElementById('meusItens');
 var itemsJson = [];
 var labelClass = [];
 var li;
+let checkbox;
 var contador = itemsJson.length
 lerLocalStorageEMontarLista()
 
@@ -23,9 +24,17 @@ function criarItem(valor, classAtributo) {
     let li = document.createElement("li");
     li.setAttribute('id', contador += 1)
 
-    let checkbox = document.createElement('input');
+    checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox')
+    checkbox.setAttribute('class', classAtributo)
     checkbox.setAttribute('onclick', 'alterarCheck(' + contador + ')');
+
+    if (classAtributo == 'checked') {
+        checkbox.checked = true
+    } else {
+        checkbox.checked = false
+    }
+
     li.appendChild(checkbox)
 
     let label = document.createElement('label')
@@ -45,53 +54,26 @@ function criarBotaoRemoverItem(id) {
     return btn;
 }
 
-
-function saveOnLocalStorage(item, classLabel) {
-    itemsJson.push(item);
-    localStorage.setItem('listaToDo', JSON.stringify(itemsJson));
-
-    labelClass.push(classLabel)
-    localStorage.setItem('labelStyleCheck', JSON.stringify(labelClass))
-}
-
-function updateStyleLocalStorage(index, classLabel) {
-    labelClass = JSON.parse(localStorage.getItem('labelStyleCheck'))
-    console.log(labelClass[index] = classLabel)
-    localStorage.setItem('labelStyleCheck', JSON.stringify(labelClass))
-}
-
 function limparCampoInput() {
     textItem.value = "";
 }
 
+
+function saveOnLocalStorage(item, classLabel) {
+    var obj = {
+        'item': item,
+        'labelClass': classLabel
+    }
+    itemsJson.push(obj);
+    localStorage.setItem('listaToDo', JSON.stringify(itemsJson));
+}
+
 function lerLocalStorageEMontarLista() {
     var lista = JSON.parse(localStorage.getItem('listaToDo'));
-    var styleJson = JSON.parse(localStorage.getItem('labelStyleCheck'))
     if (lista) {
         itemsJson = lista;
         for (var i = 0; i < itemsJson.length; i++) {
-            criarItem(itemsJson[i], styleJson[i]);
-        }
-    }
-}
-
-// function limpeItemStorage(id) {
-//     var index = id - 1
-//     console.log(`ID ${id} / index ${index}`)
-
-//     var item = JSON.parse(localStorage.getItem('listaToDo'))
-//     console.log(`ANTES DA EXCLUSAO ${item}`)
-//     item.splice(index, 1)
-//     console.log(`DEPOIS DA EXCLUSAO ${item}`)
-//     localStorage.setItem('listaToDo', JSON.stringify(item))
-// }
-
-function remover(id) {
-    console.log(`id para ser removido ${id}`)
-    for (i = 0; i < ulItens.children.length; i++) {
-        if (ulItens.children[i].getAttribute('id') == id) {
-            console.log(ulItens.children[i])
-            ulItens.children[i].remove();
+            criarItem(itemsJson[i].item, itemsJson[i].labelClass);
         }
     }
 }
@@ -109,4 +91,30 @@ function alterarCheck(id) {
         updateStyleLocalStorage(index, 'check')
     }
     return label
+}
+
+function updateStyleLocalStorage(index, classLabel) {
+    itemsJson = JSON.parse(localStorage.getItem('listaToDo'))
+    itemsJson[index].labelClass = classLabel
+    localStorage.setItem('listaToDo', JSON.stringify(itemsJson))
+}
+
+function remover(id) {
+    for (i = 0; i < ulItens.children.length; i++) {
+        if (ulItens.children[i].getAttribute('id') == id) {
+            ulItens.children[i].remove();
+            limpeItemStorage(i)
+        }
+    }
+}
+
+function limpeItemStorage(id) {
+    obj = JSON.parse(localStorage.getItem('listaToDo'));
+    console.log(`id para ser removido ${id}`)
+    console.log(obj[id])
+
+    let a = obj.splice(id)
+    console.log(a)
+    localStorage.setItem('listaToDo', JSON.stringify(obj))
+
 }
